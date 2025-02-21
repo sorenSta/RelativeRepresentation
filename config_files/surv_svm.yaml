@@ -1,0 +1,26 @@
+exp_params:
+  to_torch: 0
+  to_struct_array: 1
+  path_data: "<path_to_input_data>"
+  path_target: "<path_to_labels>"
+  path_output: "./"
+  project_files: ["cgga/cgga_fpkm.csv", "gse154041/gse154041_norm.csv","tcga_gbmlgg/tcga_gbmlgg_fpkm.csv", "cptac_brain/cptac3_fpkm.csv", "glass/glass_tpm.csv" ]  
+  projects_tar: ["cgga", "gse154041", "tcga_gbmlgg", "cptac_brain", "glass"] 
+  normalization: "log2"
+  data_transformer: "identity"
+  feature_selector: "hvg"
+  standardizer: "identity"
+  algorithm: "SurvSVM"
+  evaluation_metric: "c-index"
+  n_iter: 60
+
+
+train_params:
+  n_features: [500, 1000, 5000, 10000]
+  alpha: [0.001, 0.01, 0.1, 1, 10]
+  rank_ratio: [0.1, 0.3, 0.5, 0.7, 1.0]
+  kernel: ['linear', 'rbf', 'poly']
+  degree: [2, 3, 4, 5]
+  gamma: [0.0001, 0.001, 0.01, 0.1, 1]
+  max_iter: [100, 500, 1000, 2000]
+  n_bins: [5, 10, 15, 20, 25, 30, 50, 100, 200]

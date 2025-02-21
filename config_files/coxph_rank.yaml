@@ -1,0 +1,24 @@
+exp_params:
+  to_torch: 0
+  to_struct_array: 1
+  path_data: "<path_to_input_data>"
+  path_target: "<path_to_labels>"
+  path_output: "./"
+  project_files: ["cgga/cgga_fpkm.csv", "gse154041/gse154041_norm.csv","tcga_gbmlgg/tcga_gbmlgg_fpkm.csv", "cptac_brain/cptac3_fpkm.csv", "glass/glass_tpm.csv" ] #["scanb/scanb_fpkm.csv", "tcga_brca/tcga_brca_fpkm.csv","aurora/aurora_norm.csv", "gse177043/gse177043_getmm.csv"]["cgga/cgga_fpkm.csv", "gse154041/gse154041_norm.csv","tcga_gbmlgg/tcga_gbmlgg_fpkm.csv", "cptac_brain/cptac3_fpkm.csv", "glass/glass_tpm.csv" ] #["scanb/scanb_fpkm.csv", "tcga_brca/tcga_brca_fpkm.csv", "gse164458/GSE164458_gex.csv", "oep000155/oep000155_fpkm.csv", "gse154524/gse154524_cpm.csv", "gse163882/gse163882_tpm.csv", "gse113184/gse113184_tpm.csv", "gse225846/gse225846_raw_counts.csv",  "/gse243375/gse243375_cpm.csv", "/cptac2/cptac2_breast_cpm.csv", "/cmi_mbc/cmi_mbc_cpm.csv", "gse123845/gse123845_tpm.csv", "aurora/aurora_norm.csv", "gse177043/gse177043_getmm.csv"]
+  projects_tar: ["cgga", "gse154041", "tcga_gbmlgg", "cptac_brain", "glass"] #["tcga_ov", "gse102073", "mocog", "aocs"]["scanb", "tcga_brca", "aurora", "gse177043"]
+  normalization: "log2"
+  data_transformer: "rank"
+  feature_selector: "hvg"
+  standardizer: "identity"
+  algorithm: "CoxPH"
+  evaluation_metric: "c-index"
+  n_iter: 60
+
+
+train_params:
+  n_features: [500, 1000, 5000, 10000]
+  alphas: [[0.01], [0.05], [0.1], [0.2], [0.3], [0.4], [0.5], [0.6], [0.7], [0.8], [0.9]]  #[0.01], [0.05], [0.1], [0.2], [0.3], [0.4], [0.5], [0.6], [0.7], [0.8], [0.9][2.0], [2.5], [3.0] n_alphas: [0.7], [0.8], [0.9],[1.0], [1.5], [1.75],  [50, 100, 150, 200] [0.01], [0.05], [0.1], [0.2], [0.3], [0.4], [0.5], [0.6],
+  l1_ratio: [0.1, 0.2, 0.4, 0.6, 0.8, 1.0]
+  rank_ratio: [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9]
+  max_iter: [100,500,1000,2000]
+  n_bins: [5, 10, 15, 20, 25, 30, 50, 100, 200]
